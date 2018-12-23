@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+    List<SelectListItem> categoryList = new List<SelectListItem>
+    {
+    new SelectListItem {Text ="Action", Value = "action"},
+    new SelectListItem {Text = "Animation", Value = "animation"},
+    new SelectListItem {Text = "Children", Value = "children" },
+    new SelectListItem {Text ="Classics", Value = "classics"},
+    new SelectListItem {Text = "Comedy", Value = "comedy"},
+    new SelectListItem {Text = "Documentary", Value = "documentary"},
+    new SelectListItem {Text = "Drama", Value = "drama" },
+    new SelectListItem {Text = "Family", Value = "family" },
+    new SelectListItem {Text ="Foreign", Value = "foreign"},
+    new SelectListItem {Text = "Games", Value = "games"},
+    new SelectListItem {Text = "Horror", Value = "horror" },
+    new SelectListItem {Text ="Music", Value = "music"},
+    new SelectListItem {Text = "**New**", Value = "new"},
+    new SelectListItem {Text = "Sci-Fi", Value = "sci-fi" },
+    new SelectListItem {Text = "Sports", Value = "sports" },
+    new SelectListItem {Text ="Travel", Value = "travel"},
+    };
+}
+
+<h2>Film Search ....</h2>
+
+@using (Html.BeginForm("SearchResult", "Film", FormMethod.Get, new { id="search-form"}))
+{
+
+<div class="form-horizontal">
+    <h4>(No Bound Model - Index)</h4>
+    <hr />
+
+    <div class="form-group">
+        @Html.Label("Genre", htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+        <div class="col-md-10">
+            @Html.DropDownList("genre", categoryList)
+            @*@Html.TextBox("Genre", null, new { @class = "form-control" })*@
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.Label("Minimum Length:", htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+        <div class="col-md-10">
+            @Html.TextBox("MinLength:", null, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.Label("Maximum Length:", htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+        <div class="col-md-10">
+            @Html.TextBox("MaxLength", null, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Search" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+

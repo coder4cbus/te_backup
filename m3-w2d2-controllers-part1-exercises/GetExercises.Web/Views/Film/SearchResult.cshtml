@@ -1,0 +1,33 @@
+﻿@model IList<GetExercises.Web.Models.Film>
+
+@{
+    ViewBag.Title = "SearchResult";
+}
+<style>
+    .page-header {
+        font-size:small;
+        font-weight:700;
+    }
+</style>
+<h2>Film Search Results...</h2>
+<table class="table">
+
+    <tr>
+        <td class="page-header">Title</td>
+        <td class="page-header">Description</td>
+        <td class="page-header">Release Year</td>
+        <td class="page-header">Length</td>
+        <td class="page-header">Rating</td>
+    </tr>
+    @foreach (var film in Model)
+    {
+
+        <tr>
+            <td>@film.Title</td>
+            <td>@film.Description</td>
+            <td>@film.ReleaseYear</td>
+            <td>@film.Length</td>
+            <td>@film.Rating</td>
+        </tr>
+    }
+</table>

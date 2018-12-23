@@ -1,0 +1,42 @@
+﻿@model GetExercises.Web.Models.FilmSearchViewModel
+
+@{
+    ViewBag.Title = "SearchResult2";
+}
+
+<h2>SearchResult2</h2>
+
+<div>
+    <h4>FilmSearchViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxLength)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

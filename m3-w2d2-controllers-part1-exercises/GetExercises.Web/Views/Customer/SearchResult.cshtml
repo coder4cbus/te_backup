@@ -1,0 +1,33 @@
+﻿@model IList<GetExercises.Web.Models.Customer>
+
+@{
+    ViewBag.Title = "SearchResult";
+}
+<style>
+    .page-header {
+        font-size: small;
+        font-weight: 700;
+    }
+</style>
+
+<h2>Customer Search Results</h2>
+
+<table class="table">
+
+        <tr>
+            <td class="page-header">First Name</td>
+            <td class="page-header">Last Name</td>
+            <td class="page-header">E-mail</td>
+            <td class="page-header">Active?</td>
+        </tr>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.FirstName</td>
+                <td>@customer.LastName</td>
+                <td>@customer.Email</td>
+                <td>@customer.IsActive</td>
+            </tr>
+        }
+    </table>
+

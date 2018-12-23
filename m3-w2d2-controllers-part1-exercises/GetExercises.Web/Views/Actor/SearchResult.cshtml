@@ -1,0 +1,31 @@
+﻿@*Bind to IList<Actor> *@
+
+@model IList<GetExercises.Web.Models.Actor>
+
+
+@{
+    ViewBag.Title = "SearchResult";
+}
+
+<style>
+    .page-header {
+        font-size: small;
+        font-weight: 700;
+    }
+</style>
+
+<h2>Actor Search Results...</h2>
+<table class="table">
+
+    <tr>
+        <td class="page-header">First Name</td>
+        <td class="page-header">Last Name</td>
+
+    @foreach (var actor in Model)
+    {
+        <tr>
+            <td>@actor.FirstName</td>
+            <td>@actor.LastName</td>
+        </tr>
+    }
+</table>
