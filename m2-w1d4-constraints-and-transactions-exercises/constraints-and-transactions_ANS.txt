@@ -1,0 +1,356 @@
+-- INSERT
+
+-- 1. Add Klingon as a spoken language in the USA
+SELECT * FROM countrylanguage WHERE countrycode = 'USA'
+--need countrycode for official lang and percent to insert new lang
+--step 1 above
+
+SELECT * FROM countrylanguage WHERE countrycode = 'USA'
+INSERT INTO table_name (col1, col2)
+VALUES (value1, value2)
+--right click on table and script table > insert and open in assoc. window for changes
+--remove USE and GO statements
+--USE [World]
+--GO
+
+--INSERT INTO [dbo].[countrylanguage]
+--           ([countrycode]
+--           ,[language]
+--           ,[isofficial]
+--           ,[percentage])
+--     VALUES
+--           (<countrycode, char(3),>
+--           ,<language, varchar(64),>
+--           ,<isofficial, bit,>
+--           ,<percentage, real,>)
+--GO
+
+SELECT * FROM countrylanguage WHERE countrycode = 'USA'
+INSERT INTO [countrylanguage]
+           ([countrycode]
+           ,[language]
+           ,[isofficial]
+           ,[percentage])
+     VALUES
+           ('USA', 'Klingon', 0, 0.0001)
+
+SELECT * FROM countrylanguage WHERE countrycode = 'USA'
+--run above to check for addition
+-- 2. Add Klingon as a spoken language in Great Britain
+
+SELECT * FROM countrylanguage WHERE countrycode = 'USA'
+INSERT INTO [countrylanguage]
+           ([countrycode]
+           ,[language]
+           ,[isofficial]
+           ,[percentage])
+     VALUES
+           ('USA', 'Klingon', 0, 0.0001)
+-- UPDATE
+
+-- 1. Update the capital of the USA to Houston
+SELECT co.*,ci.*
+FROM Country co
+JOIN city as ci ON co.capital = ci.id 
+--step 1 above 
+SELECT co.*,ci.*
+FROM Country co
+JOIN city as ci ON co.capital = ci.id 
+WHERE co.code = 'USA'
+--scripting table and select update and delete go before copy paste here
+--step 2
+UPDATE [dbo].[country]
+   SET [code] = <code, char(3),>
+      ,[name] = <name, varchar(64),>
+      ,[continent] = <continent, varchar(64),>
+      ,[region] = <region, varchar(64),>
+      ,[surfacearea] = <surfacearea, real,>
+      ,[indepyear] = <indepyear, smallint,>
+      ,[population] = <population, int,>
+      ,[lifeexpectancy] = <lifeexpectancy, real,>
+      ,[gnp] = <gnp, numeric(10,2),>
+      ,[gnpold] = <gnpold, numeric(10,2),>
+      ,[localname] = <localname, varchar(64),>
+      ,[governmentform] = <governmentform, varchar(64),>
+      ,[headofstate] = <headofstate, varchar(64),>
+      ,[capital] = <capital, int,>
+      ,[code2] = <code2, char(2),>
+ WHERE <Search Conditions,,>
+ --scripting table and select update, remove go and other top statement before copy and paste above
+ --step 3
+UPDATE [dbo].[country]
+   SET 
+      [capital] = 3796
+ WHERE code = 'USA'
+--step 4 update copy and paste as shown below
+  --scripting table and select update
+
+SELECT co.*,ci.*
+FROM Country co
+JOIN city as ci ON co.capital = ci.id 
+WHERE co.code = 'USA'
+UPDATE [dbo].[country]
+   SET 
+      [capital] = 3796
+ WHERE code = 'USA'
+ -- add two sets of code together and  run
+
+-- 2. Update the capital of the USA to Washington DC and the head of state
+UPDATE [dbo].[country]
+   SET 
+      [capital] = 3796
+
+ WHERE code = 'USA'
+--step one copy from last quest
+UPDATE [dbo].[country]
+   SET 
+      [capital] = 3796
+	  [headofstate] = 
+	  --look up Washington CD id from query and add to above
+ WHERE code = 'USA'
+--step 2 copy from clipboard and select head of state instead
+
+UPDATE [dbo].[country]
+   SET 
+      [capital] = 3796,
+	  [headofstate] = 'Donald Trump'
+	  --look up WAshington CD id from query and add to above
+ WHERE code = 'USA'
+
+-- 1. Delete English as a spoken language in the USA
+SELECT * FROM countrylanguage WHERE countrycode = 'USA'
+-- 2. Delete all occurrences of the Klingon language 
+SELECT * FROM countrylanguage 
+WHERE countrycode = 'USA'
+AND language = 'English'
+--step 1
+
+DELETE FROM countrylanguage 
+WHERE countrycode = 'USA'
+AND language = 'English'
+--step 2 change select to delete
+
+SELECT * FROM countrylanguage WHERE countrycode = 'USA'
+
+--step 3 
+---rerun query to check for deletions
+
+SELECT * FROM countrylanguage 
+WHERE language = 'Klingon'
+--step 4 change select to delete
+
+DELETE FROM countrylanguage 
+WHERE language = 'Klingon'
+--step 5
+
+
+SELECT * FROM countrylanguage 
+WHERE language = 'Klingon'
+--step 6
+--undo last change and rerun to check for deletion
+-- REFERENTIAL INTEGRITY
+
+-- 1. Try just adding Elvish to the country language table.
+--step 1 script table countrylanguage for an insert
+USE [World]
+GO
+
+INSERT INTO [dbo].[countrylanguage]
+           ([countrycode]
+           ,[language]
+           ,[isofficial]
+           ,[percentage])
+     VALUES
+           (<countrycode, char(3),>
+           ,<language, varchar(64),>
+           ,<isofficial, bit,>
+           ,<percentage, real,>)
+GO
+--step 2 adjust result as shown below
+INSERT INTO [dbo].[countrylanguage]
+([language])
+VALUES
+('Elvish')
+--Msg 515, Level 16, State 2, Line 170
+--Cannot insert the value NULL into column 'countrycode', table 'World.dbo.countrylanguage'; column does not allow nulls. INSERT fails.
+--The statement has been terminated.
+
+
+-- 2. Try inserting English as a spoken language in the country ZZZ. What happens?
+
+--script table via insert for country lang
+USE [World]
+GO
+
+INSERT INTO [dbo].[countrylanguage]
+           ([countrycode]
+           ,[language]
+           ,[isofficial]
+           ,[percentage])
+     VALUES
+           (<countrycode, char(3),>
+           ,<language, varchar(64),>
+           ,<isofficial, bit,>
+           ,<percentage, real,>)
+GO
+
+--step 2 adjust table 
+
+INSERT INTO [dbo].[countrylanguage]
+           ([countrycode]
+           ,[language]
+           ,[isofficial]
+           ,[percentage])
+     VALUES
+           ('ZZZ', 'English', 0, 45.0)
+--Msg 547, Level 16, State 0, Line 199
+--The INSERT statement conflicted with the FOREIGN KEY constraint "fk_countrylanguage_countrycode". The conflict occurred in database "World", table "dbo.country", column 'code'.
+--The statement has been terminated.
+-- keys go not match - foreign and another one
+
+-- 3. Try deleting the country USA. What happens?
+
+--USA is a foreign key in countrylanguage table 
+SELECT * FROM country 
+WHERE code = 'USA'
+
+
+INSERT INTO [dbo].[countrylanguage]
+           ([countrycode]
+           ,[language]
+           ,[isofficial]
+           ,[percentage])
+     VALUES
+           ('USA', 'English', 0, 84.0)
+
+
+
+--above runs, but try to change to a delete and get error
+DELETE FROM country 
+WHERE code = 'USA'
+
+--Msg 547, Level 16, State 0, Line 218
+--The DELETE statement conflicted with the REFERENCE constraint "fk_countrycode". The conflict occurred in database "World", table "dbo.city", column 'countrycode'.
+--The statement has been terminated.
+
+-- CONSTRAINTS
+
+-- 1. Try inserting English as a spoken language in the USA
+SELECT * FROM countrylanguage WHERE countrycode = 'USA'
+
+INSERT INTO [dbo].[countrylanguage]
+           ([countrycode]
+           ,[language]
+           ,[isofficial]
+           ,[percentage])
+     VALUES
+           ('USA', 'English', 0, 84.0)
+
+
+
+-- 2. Try again. What happens?
+
+-- 3. Let's relocate the USA to the continent - 'Outer Space'
+--step 1: script table as and update clipboard and copy paste below
+USE [World]
+GO
+
+INSERT INTO [dbo].[country]
+           ([code]
+           ,[name]
+           ,[continent]
+           ,[region]
+           ,[surfacearea]
+           ,[indepyear]
+           ,[population]
+           ,[lifeexpectancy]
+           ,[gnp]
+           ,[gnpold]
+           ,[localname]
+           ,[governmentform]
+           ,[headofstate]
+           ,[capital]
+           ,[code2])
+     VALUES
+           (<code, char(3),>
+           ,<name, varchar(64),>
+           ,<continent, varchar(64),>
+           ,<region, varchar(64),>
+           ,<surfacearea, real,>
+           ,<indepyear, smallint,>
+           ,<population, int,>
+           ,<lifeexpectancy, real,>
+           ,<gnp, numeric(10,2),>
+           ,<gnpold, numeric(10,2),>
+           ,<localname, varchar(64),>
+           ,<governmentform, varchar(64),>
+           ,<headofstate, varchar(64),>
+           ,<capital, int,>
+           ,<code2, char(2),>)
+GO
+
+
+
+-- step 2
+--adjust resuting copy / paste as shown 
+UPDATE [dbo].[country]
+SET [continent] = 'Outer Space'
+WHERE code = 'USA'
+
+--resulting error shown below
+--Msg 547, Level 16, State 0, Line 296
+--The UPDATE statement conflicted with the CHECK constraint "country_continent_check". The conflict occurred in database "World", table "dbo.country", column 'continent'.
+--The statement has been terminated.
+
+-- script again, the constraint associated with error, to determine why error is resulting 
+--below is what results
+--USE [World]
+--GO
+
+--ALTER TABLE [dbo].[country]  WITH CHECK ADD  CONSTRAINT [country_continent_check] CHECK  (([continent]='Asia' OR [continent]='Europe' OR [continent]='North America' OR [continent]='Africa' OR [continent]='Oceania' OR [continent]='Antarctica' OR [continent]='South America'))
+--GO
+
+--ALTER TABLE [dbo].[country] CHECK CONSTRAINT [country_continent_check]
+--GO
+--Notice above that you have no option to add a new continent, only can add ones provided
+
+-- How to view all of the constraints
+
+SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+SELECT * FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE
+SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS
+
+
+-- TRANSACTIONS
+
+-- 1. Try deleting all of the rows from the country language table and roll it back.
+BEGIN TRAN
+
+ROLLBACK TRAN
+-- step 1 above
+
+
+SELECT * FROM countrylanguage
+
+
+--step 2 run above 
+
+BEGIN TRAN
+
+DELETE FROM countrylanguage
+ROLLBACK TRAN
+
+--step 3 run above
+
+SELECT * FROM countrylanguage
+--step 4 rerun original statement 
+
+
+-- 2. Try updating all of the cities to be in the USA and roll it back
+
+
+--if transaction in process, then you cannot access the table from another place because process locks the table 
+-- unable to reach db or db is locked and default time out is 90 sec
+
+
+-- 3. Demonstrate two different SQL connections trying to access the same table where one happens to be inside of a transaction but hasn't committed yet.
