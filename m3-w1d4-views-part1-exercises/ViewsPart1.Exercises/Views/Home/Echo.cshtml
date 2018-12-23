@@ -1,0 +1,37 @@
+﻿@{
+    int count = int.Parse(Request.QueryString["Count"]);
+    string word = Request.QueryString["Word"];
+    // Get from the Request Url (e.g. localhost/Home/echo?count=number&word=word)
+    //http://localhost:53746/Home/Echo?count=12&word=word
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ECHO Echo echo</title>
+    <style>
+        li {
+            list-style-type: none;
+            font-family: Wingdings;
+            /*above just for fun!*/
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            @{ for (int i = 0; i <= @count; i++)
+                {
+                    string font = $"{count - i}px";
+
+                    <li style="font-size: @font;">
+                        @word
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</body>
+</html>

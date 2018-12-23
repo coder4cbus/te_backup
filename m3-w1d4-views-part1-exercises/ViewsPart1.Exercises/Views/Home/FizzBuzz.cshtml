@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FizzBuzz</title>
+    <style>
+        li {
+            list-style-type: none;
+        }
+
+        .fizz {
+            color: blue;
+            font-weight: 700;
+            font-style: italic
+        }
+
+        .buzz {
+            color: red;
+            font-weight: 700;
+        }
+
+        .fizzbuzz {
+            color: purple;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: xx-large;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    @{ string num = ""; }
+    <div>
+        @{
+            int count = 0;
+            int i = 1;
+            for (i = 1; i < 101; i++)
+            {
+                if ((i % 3 == 0) && (i % 5 == 0))
+                {
+                    num = "FizzBuzz!";
+                    <ul>
+                        <li class="fizzbuzz">@num</li>
+                    </ul>
+                    count++;
+                }
+                else if (i % 5 == 0)
+                {
+                    num = "Buzz!";
+                    <ul>
+                        <li class="buzz">@num</li>
+                    </ul>
+                    count++;
+                }
+                else if (i % 3 == 0)
+                {
+                    num = "Fizz!";
+                    <ul>
+                        <li class="fizz">@num</li>
+                    </ul>
+                    count++;
+                }
+                else
+                {
+                    num = $"{i}";
+                    <ul>
+                        <li class="normal">@num</li>
+                    </ul>
+                    count++;
+                }
+            }
+        }
+    </div>
+</body>
+</html>

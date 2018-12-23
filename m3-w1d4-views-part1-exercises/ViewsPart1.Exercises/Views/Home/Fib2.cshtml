@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Fibonacci</title>
+
+    <style>
+        li {
+            list-style-type: none;
+        }
+
+        .even {
+            color: orangered;
+            font-weight: 700;
+            font-style: italic
+        }
+
+        .odd {
+            color: forestgreen;
+            font-weight: 700;
+            font-style: italic
+        }
+    </style>
+</head>
+<body>
+
+    @{string fibonacciSequence = " ";}
+
+    <div>
+
+        <h1>Fibonacci 25 Sequence is...</h1>
+        @{ int startValue = 0, secondValue = 1; }
+
+        <ul>
+            @{ int nextValue = 0;
+                for (int i = 1; i < 26; i++)
+
+                {
+                    nextValue = startValue + secondValue;
+                    fibonacciSequence = ($"{nextValue}");
+                    startValue = secondValue;
+                    secondValue = nextValue;
+
+                    if (nextValue % 2 == 0)
+                    {
+                        <li class="even">@fibonacciSequence</li>
+                    }
+                    else
+                    {
+                        <li class="odd">@fibonacciSequence</li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿
+@model List<string>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>More ECHO Echo echos</title>
+    <style>
+        li {
+            list-style-type: none;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div>
+        <ul>
+            @{string count = "35";
+                int numCount = int.Parse(count);
+                string word = "WORD UP!";
+                while (numCount > 0)
+                {
+                    string font = $"{numCount}px";
+                        <ul>
+                            @* Model refers to a List<string> *@
+                            @foreach (string wordUp in Model)
+                            {
+                            <li style="color:@wordUp; font-size: @font;">  @word</li>
+                                numCount--;
+                                <hr length="100%" />
+                            }
+                        </ul>
+                }
+            }
+        </ul>
+    </div>
+</body>
+</html>
